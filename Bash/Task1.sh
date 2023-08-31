@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function all {
-	echo All function was invoked!
+	ADDR=$(ip addr show |grep -w inet |grep -v 127.0.0.1|awk '{ print $2}' | head -n 1)
+	echo -e "Results:\n$(nmap -sn $ADDR)"
 	exit 0
 }
 
